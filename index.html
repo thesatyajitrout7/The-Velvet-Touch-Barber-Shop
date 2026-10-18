@@ -1,0 +1,581 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#090909">
+<meta name="description" content="The Velvet Touch Barber Shop, CDA Sector 6, Cuttack. Premium haircuts, beard trims and grooming.">
+<title>The Velvet Touch | Barber Shop</title>
+
+<style>
+:root {
+  --bg: #090909;
+  --panel: #141310;
+  --gold: #dca94f;
+  --light-gold: #f3cc7a;
+  --text: #f7f2e8;
+  --muted: #bcb5a7;
+  --line: rgba(220,169,79,.28);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; }
+.wrap { width: min(1160px, 92%); margin: auto; }
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(8,8,8,.96);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(12px);
+}
+.nav {
+  min-height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.brand-mark { color: var(--gold); font-size: 32px; }
+.brand-name {
+  display: block;
+  font: 17px Georgia, serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.brand-sub {
+  display: block;
+  color: var(--gold);
+  text-align: center;
+  font-size: 9px;
+  letter-spacing: 3px;
+}
+.navlinks { display: flex; gap: 24px; font-size: 13px; }
+.navlinks a:hover { color: var(--light-gold); }
+.menu {
+  display: none;
+  background: transparent;
+  color: var(--gold);
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  padding: 7px 12px;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 18px;
+  border-radius: 8px;
+  border: 1px solid var(--gold);
+  font-size: 13px;
+  font-weight: bold;
+  transition: .2s;
+}
+.btn-gold {
+  background: linear-gradient(135deg, var(--light-gold), var(--gold));
+  color: #17110a;
+  border-color: transparent;
+}
+.btn-gold:hover { transform: translateY(-2px); }
+.btn-outline { color: var(--light-gold); }
+.btn-outline:hover { background: #241c0e; }
+
+.hero {
+  min-height: 490px;
+  display: flex;
+  align-items: center;
+  padding: 65px 0;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0 -5% 0 25%;
+  background:
+    linear-gradient(90deg, #090909 0%, rgba(9,9,9,.65) 45%, rgba(9,9,9,.3)),
+    url("https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1400&q=85")
+    center/cover;
+}
+.hero-copy { max-width: 590px; }
+.eyebrow {
+  color: var(--light-gold);
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+.hero h1 {
+  color: var(--light-gold);
+  font: clamp(48px, 7vw, 78px)/1.04 Georgia, serif;
+  margin: 12px 0;
+  text-transform: uppercase;
+}
+.tagline { font: 19px Georgia, serif; }
+.tagline span { color: var(--gold); padding: 0 5px; }
+.hero p { color: #ddd5c7; max-width: 480px; font-size: 14px; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 24px 0; }
+.location { color: var(--light-gold); font-size: 13px; }
+
+.perks {
+  background: #10100f;
+  border-block: 1px solid var(--line);
+}
+.perks-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 20px 0;
+}
+.perk {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 8px;
+  border-right: 1px solid var(--line);
+}
+.perk:last-child { border: 0; }
+.perk-icon { font-size: 24px; color: var(--gold); }
+.perk strong { display: block; font: 15px Georgia, serif; }
+.perk small { color: var(--muted); font-size: 11px; }
+
+section { padding: 72px 0; }
+.section-head { text-align: center; margin-bottom: 32px; }
+.section-head h2 { font: clamp(29px, 4vw, 40px) Georgia, serif; margin: 8px 0; }
+.section-head p { color: var(--muted); margin: 0; }
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+.service {
+  overflow: hidden;
+  background: linear-gradient(145deg, #191713, #0d0d0c);
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  transition: .25s;
+}
+.service:hover { transform: translateY(-4px); border-color: var(--gold); }
+.service img { width: 100%; height: 180px; object-fit: cover; display: block; }
+.service-content { padding: 17px; }
+.service h3 { font: 21px Georgia, serif; margin: 0 0 5px; }
+.service p { color: var(--muted); font-size: 13px; margin: 0 0 13px; }
+.price-row { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.price { color: var(--light-gold); font-weight: bold; }
+.small-btn {
+  background: transparent;
+  color: var(--light-gold);
+  border: 1px solid var(--gold);
+  border-radius: 6px;
+  padding: 7px 11px;
+  font-size: 12px;
+}
+.small-btn:hover { background: var(--gold); color: #111; }
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 38px;
+  align-items: center;
+}
+.about-img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 11px;
+  border: 1px solid var(--line);
+}
+.about-copy h2 { font: 38px/1.2 Georgia, serif; margin: 10px 0; }
+.about-copy p { color: var(--muted); }
+.stats { display: flex; flex-wrap: wrap; gap: 22px; margin-top: 24px; }
+.stat { border-left: 2px solid var(--gold); padding-left: 12px; }
+.stat strong { display: block; color: var(--light-gold); font: 23px Georgia, serif; }
+.stat span { font-size: 11px; color: var(--muted); }
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+.gallery-grid img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+}
+
+.booking-band {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 25px;
+  background: linear-gradient(120deg, #211a0f, #0d0d0c);
+  border: 1px solid var(--gold);
+  border-radius: 11px;
+}
+.booking-band h3 { font: 25px Georgia, serif; margin: 0 0 5px; }
+.booking-band p { color: var(--muted); font-size: 13px; margin: 0; }
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+.contact-card {
+  padding: 24px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 11px;
+}
+.contact-card h3 { font: 23px Georgia, serif; margin: 0 0 15px; }
+.contact-card p { color: var(--muted); font-size: 14px; }
+.contact-card b { color: var(--light-gold); }
+.hours {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255,255,255,.09);
+  font-size: 13px;
+}
+.gold { color: var(--light-gold); }
+
+footer { padding: 25px 0; border-top: 1px solid var(--line); color: var(--muted); font-size: 12px; }
+.footer-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+
+.float-wa {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 30;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #25d366;
+  color: #06270e;
+  font-size: 25px;
+  box-shadow: 0 5px 20px #0008;
+}
+
+@media(max-width:800px) {
+  .navlinks {
+    display: none;
+    position: absolute;
+    top: 76px;
+    left: 0;
+    right: 0;
+    background: #0b0b0a;
+    padding: 20px 5%;
+    flex-direction: column;
+    gap: 16px;
+    border-bottom: 1px solid var(--line);
+  }
+  .navlinks.open { display: flex; }
+  .menu { display: block; }
+  .nav > .btn { display: none; }
+  .hero { min-height: 470px; }
+  .hero::before {
+    inset: 0 -5%;
+    background:
+      linear-gradient(90deg, rgba(9,9,9,.94), rgba(9,9,9,.58)),
+      url("https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1000&q=80") center/cover;
+  }
+  .perks-grid { grid-template-columns: repeat(2, 1fr); }
+  .perk { justify-content: flex-start; border: 0; }
+  .service-grid { grid-template-columns: repeat(2, 1fr); }
+  .about-grid, .contact-grid { grid-template-columns: 1fr; }
+  .booking-band { align-items: flex-start; flex-direction: column; }
+}
+
+@media(max-width:520px) {
+  .brand-name { font-size: 14px; }
+  .hero h1 { font-size: 48px; }
+  .tagline { font-size: 16px; }
+  section { padding: 55px 0; }
+  .service-grid { grid-template-columns: 1fr; }
+  .service img { height: 215px; }
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+  .gallery-grid img { height: 150px; }
+  .about-copy h2 { font-size: 32px; }
+  .hours { font-size: 12px; }
+  .float-wa { width: 50px; height: 50px; right: 12px; bottom: 12px; }
+}
+</style>
+</head>
+
+<body>
+
+<header class="topbar">
+  <div class="wrap nav">
+    <a class="brand" href="#home">
+      <span class="brand-mark">✂</span>
+      <span>
+        <span class="brand-name">The Velvet Touch</span>
+        <span class="brand-sub">BARBER SHOP</span>
+      </span>
+    </a>
+
+    <nav class="navlinks" id="navlinks">
+      <a href="#home">Home</a>
+      <a href="#services">Services</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <a class="btn btn-gold" data-wa href="#">☏ Book on WhatsApp</a>
+    <button class="menu" id="menu" aria-label="Toggle navigation">☰</button>
+  </div>
+</header>
+
+<main>
+  <section class="hero wrap" id="home">
+    <div class="hero-copy">
+      <div class="eyebrow">Premium Barber Shop</div>
+      <h1>The Velvet<br>Touch</h1>
+      <div class="tagline">Look Good <span>•</span> Feel Confident <span>•</span> Always</div>
+      <p>Modern haircuts, classic styles, and premium grooming services — all under one roof. Your style, our expertise.</p>
+      <div class="hero-actions">
+        <a class="btn btn-gold" data-wa href="#">☏ Book Your Appointment</a>
+        <a class="btn btn-outline" href="#services">Explore Services</a>
+      </div>
+      <div class="location">⌖ &nbsp; CDA Sector 6, Cuttack</div>
+    </div>
+  </section>
+
+  <div class="perks">
+    <div class="wrap perks-grid">
+      <div class="perk"><span class="perk-icon">✂</span><div><strong>Expert Barbers</strong><small>Skilled & Professional</small></div></div>
+      <div class="perk"><span class="perk-icon">★</span><div><strong>Premium Products</strong><small>Quality, Always</small></div></div>
+      <div class="perk"><span class="perk-icon">⬟</span><div><strong>Clean & Safe</strong><small>Hygienic Environment</small></div></div>
+      <div class="perk"><span class="perk-icon">◷</span><div><strong>On-Time Service</strong><small>Respecting Your Time</small></div></div>
+    </div>
+  </div>
+
+  <section id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Our Services</div>
+        <h2>Premium Grooming Services</h2>
+        <p>Look sharp. Feel confident. Leave refreshed.</p>
+      </div>
+
+      <div class="service-grid">
+        <article class="service">
+          <img loading="lazy" src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=700&q=80" alt="Men's haircut">
+          <div class="service-content">
+            <h3>Haircut</h3><p>Classic to modern styles, tailored to you.</p>
+            <div class="price-row"><span class="price">₹150–₹400</span><button class="small-btn book-service" data-service="Haircut">Book Now</button></div>
+          </div>
+        </article>
+
+        <article class="service">
+          <img loading="lazy" src="https://images.unsplash.com/photo-1621607512214-68297480165e?auto=format&fit=crop&w=700&q=80" alt="Beard trim">
+          <div class="service-content">
+            <h3>Beard Trim</h3><p>Shape your signature look.</p>
+            <div class="price-row"><span class="price">₹100–₹300</span><button class="small-btn book-service" data-service="Beard Trim">Book Now</button></div>
+          </div>
+        </article>
+
+        <article class="service">
+          <img loading="lazy" src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=700&q=80" alt="Barber shave">
+          <div class="service-content">
+            <h3>Classic Shave</h3><p>A smooth, refreshing shave.</p>
+            <div class="price-row"><span class="price">₹100–₹250</span><button class="small-btn book-service" data-service="Classic Shave">Book Now</button></div>
+          </div>
+        </article>
+
+        <article class="service">
+          <img loading="lazy" src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=700&q=80" alt="Hair styling">
+          <div class="service-content">
+            <h3>Hair Styling</h3><p>Finishing touches for your style.</p>
+            <div class="price-row"><span class="price">₹100–₹300</span><button class="small-btn book-service" data-service="Hair Styling">Book Now</button></div>
+          </div>
+        </article>
+
+        <article class="service">
+          <img loading="lazy" src="https://images.unsplash.com/photo-1512690459411-b9245aed614b?auto=format&fit=crop&w=700&q=80" alt="Facial grooming">
+          <div class="service-content">
+            <h3>Facial</h3><p>Refresh your skin and unwind.</p>
+            <div class="price-row"><span class="price">₹400–₹1,000</span><button class="small-btn book-service" data-service="Facial">Book Now</button></div>
+          </div>
+        </article>
+
+        <article class="service">
+          <img loading="lazy" src="https://images.unsplash.com/photo-1593702295094-aea9c3c7fd94?auto=format&fit=crop&w=700&q=80" alt="Grooming chair">
+          <div class="service-content">
+            <h3>Haircut + Beard</h3><p>A complete, clean look in one visit.</p>
+            <div class="price-row"><span class="price">₹250–₹600</span><button class="small-btn book-service" data-service="Haircut and Beard Combo">Book Now</button></div>
+          </div>
+        </article>
+      </div>
+
+      <p style="text-align:center;color:var(--muted);font-size:11px;margin-top:20px">
+        Demo prices — confirm actual prices with the shop owner before publishing.
+      </p>
+    </div>
+  </section>
+
+  <section id="about" style="background:#0d0d0c">
+    <div class="wrap about-grid">
+      <img class="about-img" loading="lazy"
+        src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=1000&q=80"
+        alt="Barber shop interior">
+
+      <div class="about-copy">
+        <div class="eyebrow">About Us</div>
+        <h2>More Than Just a Haircut</h2>
+        <p>At The Velvet Touch, we believe grooming is self-care. Our goal is to help you look and feel your best with thoughtful service, sharp styles, and a welcoming atmosphere.</p>
+        <p>Visit us at CDA Sector 6, Cuttack. For appointments and service questions, message us directly on WhatsApp.</p>
+        <div class="stats">
+          <div class="stat"><strong>Personal</strong><span>Style-focused service</span></div>
+          <div class="stat"><strong>Fresh</strong><span>Grooming experience</span></div>
+          <div class="stat"><strong>Local</strong><span>Cuttack, Odisha</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Gallery</div>
+        <h2>The Shop & The Style</h2>
+        <p>Replace these sample images with real shop photos before launch.</p>
+      </div>
+      <div class="gallery-grid">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=700&q=80" alt="Barber at work">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=700&q=80" alt="Fresh haircut">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1621607512214-68297480165e?auto=format&fit=crop&w=700&q=80" alt="Beard grooming">
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap" style="padding-top:0">
+    <div class="booking-band">
+      <div>
+        <h3>Ready for a New Look?</h3>
+        <p>Book your appointment on WhatsApp and get ready to look your best.</p>
+      </div>
+      <a class="btn btn-gold" data-wa href="#">☏ Chat on WhatsApp</a>
+    </div>
+  </section>
+
+  <section id="contact" style="padding-top:15px">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Find Us</div>
+        <h2>Visit The Velvet Touch</h2>
+        <p>Drop by or message us to plan your visit.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-card">
+          <h3>Contact Details</h3>
+          <p>⌖ &nbsp;<b>Address:</b> CDA Sector 6, Cuttack, Odisha</p>
+          <p>☏ &nbsp;<b>WhatsApp:</b> +91 85980 61796</p>
+          <p>✉ &nbsp;<b>Appointments:</b> Message us on WhatsApp</p>
+          <a class="btn btn-gold" data-wa href="#" style="margin-top:12px">Message Us</a>
+        </div>
+
+        <div class="contact-card">
+          <h3>Opening Hours</h3>
+          <div class="hours"><span>Monday – Sunday</span><b class="gold">9:00 AM – 2:00 PM</b></div>
+          <div class="hours"><span>Afternoon Break</span><b class="gold">2:00 PM – 4:00 PM</b></div>
+          <div class="hours"><span>Evening Hours</span><b class="gold">4:00 PM – 10:00 PM</b></div>
+          <p style="font-size:12px;margin-top:14px">Open daily, with an afternoon break from 2 PM to 4 PM.</p>
+          <a class="btn btn-outline" target="_blank" rel="noopener"
+             href="https://www.google.com/maps/search/?api=1&query=CDA+Sector+6+Cuttack+Odisha"
+             style="margin-top:8px">Open Location in Maps ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer-row">
+    <a class="brand" href="#home">
+      <span class="brand-mark">✂</span>
+      <span><span class="brand-name">The Velvet Touch</span><span class="brand-sub">BARBER SHOP</span></span>
+    </a>
+    <span>© <span id="year"></span> The Velvet Touch. All rights reserved.</span>
+    <span>Look Good <span class="gold">•</span> Feel Confident <span class="gold">•</span> Always</span>
+  </div>
+</footer>
+
+<a class="float-wa" data-wa href="#" aria-label="Book on WhatsApp">☏</a>
+
+<script>
+const WHATSAPP_NUMBER = "918598061796";
+const SHOP_NAME = "The Velvet Touch";
+
+function whatsappUrl(service = "") {
+  const message = service
+    ? `Hello ${SHOP_NAME}! I'd like to book an appointment for ${service}. Please let me know the available time slots.`
+    : `Hello ${SHOP_NAME}! I'd like to book an appointment. Please share the available time slots and service details.`;
+
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+}
+
+document.querySelectorAll("[data-wa]").forEach(link => {
+  link.href = whatsappUrl();
+  link.target = "_blank";
+  link.rel = "noopener";
+});
+
+document.querySelectorAll(".book-service").forEach(button => {
+  button.addEventListener("click", () => {
+    window.open(
+      whatsappUrl(button.dataset.service),
+      "_blank",
+      "noopener"
+    );
+  });
+});
+
+const menu = document.getElementById("menu");
+const navlinks = document.getElementById("navlinks");
+
+menu.addEventListener("click", () => {
+  const open = navlinks.classList.toggle("open");
+  menu.setAttribute("aria-expanded", String(open));
+  menu.textContent = open ? "✕" : "☰";
+});
+
+navlinks.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", () => {
+    navlinks.classList.remove("open");
+    menu.setAttribute("aria-expanded", "false");
+    menu.textContent = "☰";
+  });
+});
+
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
