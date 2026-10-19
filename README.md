@@ -1,4 +1,4 @@
-# The-Velvet-Barber-Shop
+# The-Velvet-Touch-Barber-Shop
 Modern Barber Shop Website with WhatsApp Booking Features.
 
 
